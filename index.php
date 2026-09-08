@@ -1,63 +1,41 @@
 <?php
-$num = 10;
-if($num > 10) {
-    var_dump('Bigger');
-} 
 
-if($num > 10) {
-    var_dump('Bigger');
-} else {
-    var_dump('Smaller');
+for($i = 0; $i<10; $i++){
+    var_dump($i);
 }
 
-if($num > 10) {
-    var_dump('Bigger');
-} else if($num < 10) {
-    var_dump('Smaller');
-} else {
-    var_dump('Equal');
+for($i = 9; $i>0; $i--){
+    var_dump($i);
 }
 
-$day = (int) date('w');
-$day = intval(date('w'));
-var_dump($day);
-if($day === 0) {
-    var_dump('Sunday');
-} elseif($day === 1) {
-    var_dump('Monday');
-} elseif($day === 2) {
-    var_dump('Tuesday');
-} elseif($day === 3) {
-    var_dump('Wednesday');
-} elseif($day === 4) {
-    var_dump('Thursday');
-} elseif($day === 5 || $day === 6) {
-    var_dump('Partyday');
-}else {
-    var_dump('Weirdday');
+for($i = 2; $i<1_000_000; $i*=2){
+    var_dump($i);
+}
+$time = time();
+$i=0;
+while(time() < $time+1){
+    var_dump($i++);
 }
 
-switch($day) {
-    case 0:
-        var_dump('Sunday');
-        break;
-    case 1:
-        var_dump('Monday');
-        break;
-    case 2:
-        var_dump('Tuesday');
-        break;
-    case 3:
-        var_dump('Wednesday');
-        break;
-    case 4:
-        var_dump('Thursday');
-        break;
-    case 5:
-    case 6:
-        var_dump('Partyday');
-        break;
-    default:
-        var_dump('Weirdday');
+while(false) {
+    var_dump('WHILE');
 }
 
+do {
+    var_dump('DO');
+} while(false);
+
+// while(true){
+
+// }
+
+$fruits = ['Apple', 'Banana', 'Cherry'];
+foreach($fruits as $fruit){
+    var_dump($fruit);
+}
+
+foreach($fruits as $key=>$fruit){
+    var_dump($key,$fruit);
+    $fruit = 'asdads';
+}
+var_dump($fruits);
