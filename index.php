@@ -1,20 +1,11 @@
 <?php
-$test = 'yolo';
-$test = 'yolo' . 'life';
-$test = $test . 'thug';
-$test .= 'life';
-$name = 'Kaspar';
-$age = 33;
-$test = $name . ' is ' . $age . ' years old!';
-$test = "$name is $age years old!";
-$test = '$name is $age years old!';
-$test = 'don\'t';
-$test = "lol\nlol\n";
-$test = <<<END
-    $age $name
-      a
-     b
-    c
-\n
-END;
+$test = true;
+$test = false;
+$test = true && false;
+$test = true || false;
+$test = !true;
+$test = (true && false) || false || (true && !false);
+$test = true xor false;
+$test = true and false;
+$test = true or false;
 var_dump($test);
