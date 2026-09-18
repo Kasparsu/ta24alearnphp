@@ -1,69 +1,45 @@
 <?php
+// library
 
-class Box {
-    use HasSmell;
-    public bool $isOpen = false;
-    private bool $hasBeenOpened = false;
-
-    public function __construct(private int $width, private $height, private $length) {
-      
-    }
-
-    public function setWidth(int $width) {
-        if($width<0){
-            $this->width = 0;
+class Task {
+    public function job(Logger $logger) {
+        for($i = 0; $i<10; $i++){
+            // do some shit
+            $logger->log("Job $i was done!");
         }
-        $this->width = $width;
-    }
-    public function getWidth() {
-        return $this->width;
-    }
-
-    public function open() {
-        $this->isOpen = true;
-    }
-    
-    public function volume(){
-        return $this->width * $this->height * $this->length;
-    }
-    public function test1() {
-        var_dump($this->hasBeenOpened);
     }
 }
 
-class MetalBox extends Box {
-    use HasColor, HasSmell;
-    public $weightPerUnit;
-    
-    public function mass(){
-        return $this->weightPerUnit * $this->volume();
-    }
-
-    public function test2() {
-        var_dump($this->hasBeenOpened);
+class ConsoleLogger implements Logger {
+    public function log($message) {
+        echo "$message\n";
     }
 }
 
-trait HasColor {
-    public $color;
-    public function showColor(){
-        return $this->color;
+class NothingLogger implements Logger {
+    public function log($message) {
+       
     }
 }
 
-trait HasSmell {
-    public $smell;
-    public function sniff(){
-        return $this->smell;
+interface Logger {
+    public function log($message);
+}
+
+interface Writer {
+
+}
+
+// user code
+
+class FileLogger implements Logger {
+    public function log($message) {
+        $file = fopen('log.txt', 'a');
+        fwrite($file, "$message\n");
+        fclose($file);
     }
 }
 
-
-$metal1 = new MetalBox(1,2,3);
-$metal1->weightPerUnit = 1;
-var_dump($metal1->mass(), $metal1);
-$metal1->isOpen = 'asdasd';
-var_dump($metal1->isOpen);
-$metal1->test1();
-$metal1->test2();
-var_dump($metal1->hasBeenOpened);
+$logger = new FileLogger();
+$task = new Task();
+$task->job($logger);
