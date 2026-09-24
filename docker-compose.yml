@@ -1,0 +1,13 @@
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: learnphp
+    ports:
+      - 33061:3306
+    volumes:
+      - ta24alearnphpdata:/var/lib/mysql
+volumes:
+  ta24alearnphpdata:
