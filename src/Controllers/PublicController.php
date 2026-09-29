@@ -71,4 +71,13 @@ class PublicController
     public function test() {
         $db = new App\DB();
     }
+
+    public function form() {
+        
+        view('form');
+    }
+
+    public function answer(){
+        dump($_GET, $_POST);
+    }
 }
