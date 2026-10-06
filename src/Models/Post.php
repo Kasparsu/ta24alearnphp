@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-class Post {
-    public $id;
+class Post extends Model {
+    public static $table = 'posts';
+
     public $title;
     public $body;
     public $author;
