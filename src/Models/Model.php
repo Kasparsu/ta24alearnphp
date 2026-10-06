@@ -16,4 +16,13 @@ abstract class Model {
         $db = new DB();
         return $db->where(static::$table, static::class, $field, $value);
     }
+
+    public function save(){
+        $db = new DB();
+        $fields = get_object_vars($this);
+        unset($fields['id']);
+        unset($fields['created_at']);
+        unset($fields['updated_at']);
+        $db->insert(static::$table, $fields);
+    }
 }
