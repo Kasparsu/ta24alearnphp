@@ -25,4 +25,42 @@ class PostsController
         $post->save();
         redirect('/admin/posts');
     }
+
+    public function view() {
+        $post = Post::find($_GET['id']);
+        if($post) {
+            return view('posts/view', compact('post'));
+        }
+        echo 404;
+    }
+
+    public function edit() {
+        $post = Post::find($_GET['id']);
+        if($post) {
+            return view('posts/edit', compact('post'));
+        }
+        echo 404;
+    }
+
+    public function update(){
+        $post = Post::find($_GET['id']);
+        if($post) {
+            $post->title = $_POST['title'];
+            $post->body = $_POST['body'];
+            $post->category = $_POST['category'];
+            $post->author = $_POST['author'];
+            $post->save();
+            return redirect('/admin/posts');
+        }
+        echo 404;
+    }
+
+    public function delete() {
+        $post = Post::find($_GET['id']);
+        if($post) {
+           $post->delete();
+           return redirect('/admin/posts');
+        }
+        echo 404;
+    }
 }
