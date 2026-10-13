@@ -12,6 +12,8 @@ spl_autoload_register(function ($class){
     require_once __DIR__ . "/../src/$class.php";
 });
 
+session_start();
+
 require __DIR__ . '/../helpers.php';
 require __DIR__ . '/../routes.php';
 
