@@ -12,6 +12,7 @@ class PublicController
     {
         $title = 'World';
         $posts = Post::where('category', 'world');
+        dump($posts);
         view('index', compact('title', 'posts'));
     }
 
