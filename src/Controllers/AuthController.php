@@ -27,7 +27,7 @@ class AuthController
     public function login() {
         $users = User::where('email', $_POST['email']);
         $user = $users ? $users[0] : null;
-        if(!$user || !password_verify($_POST['name'] . $_POST['email'] . $_POST['password'] . md5('yolo'), $user->password)) {
+        if(!$user || !password_verify($user->name . $_POST['email'] . $_POST['password'] . md5('yolo'), $user->password)) {
             return redirect('/login');
         }
         $_SESSION['userID'] = $user->id;
